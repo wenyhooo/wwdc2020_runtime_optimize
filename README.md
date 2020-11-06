@@ -26,8 +26,8 @@ iOS 13的runtime 源码`class_ro_t`结构（iOS14源码还未放开）：
 
 当类被使用时，也就是被第一次加载到内存时，他们一经使用就会发生变化。要了解变化，就必须先了解一下`clean memory`和`dirty memory` 的区别
 
-- **clean memory：**加载后不会发生更改的内存，`class_ro_t` 就属于`clean memory`因为它是readonly的，可以进行移除当需要时可以从磁盘中重新加载。
-- **dirty memory：**指在进程（app）运行时会发生更改的内存，要比clean memory 重量级的多，只要进程在运行，它就必须一直存在。
+- **clean memory：** 加载后不会发生更改的内存，`class_ro_t` 就属于`clean memory`因为它是readonly的，可以进行移除当需要时可以从磁盘中重新加载。
+- **dirty memory：** 指在进程（app）运行时会发生更改的内存，要比clean memory 重量级的多，只要进程在运行，它就必须一直存在。
 
 “这个变化”，就是类结构一旦被使用就会变成dirty memory ，因为运行时可能会向它写新的数据，比如创建一个新的方法动态指向类。
 
